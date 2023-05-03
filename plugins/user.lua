@@ -9,4 +9,13 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  "folke/tokyonight.nvim",
+  "tpope/vim-endwise",
+  "tpope/vim-abolish",
+  {
+    "kylechui/nvim-surround",
+    lazy = false,
+    opts = true
+  },
+  { 'wellle/targets.vim', event = 'BufRead' }
 }
