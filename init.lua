@@ -52,6 +52,19 @@ return {
     servers = {
       -- "pyright"
     },
+    setup_handlers = {
+      -- add custom handler
+      tsserver = function(_, opts) require("typescript").setup { server = opts } end
+    },
+    plugins = {
+      "jose-elias-alvarez/typescript.nvim", -- add lsp plugin
+      {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+          ensure_installed = { "tsserver" }, -- automatically install lsp
+        },
+      },
+    },
   },
 
   -- Configure require("lazy").setup() options
@@ -82,4 +95,14 @@ return {
     --   },
     -- }
   end,
+  plugins = {
+    {
+      "L3MON4D3/LuaSnip",
+      lazy = false,
+      config = function(plugin, opts)
+        require "plugins.configs.luasnip" (plugin, opts)                              -- include the default astronvim config that calls the setup call
+        require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets" } } -- load snippets paths
+      end,
+    },
+  },
 }

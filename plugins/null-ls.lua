@@ -11,6 +11,8 @@ return {
       -- Set a formatter
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
+      -- null_ls.builtins.code_actions.eslint_d,
+      -- require("typescript.extensions.null-ls.code-actions")
     }
     return config -- return final config table
   end,
