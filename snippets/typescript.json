@@ -1,23 +1,62 @@
 {
-  "setup": {
+  "clog": {
     "prefix": [
-      "setup",
-      "template"
+      "clog"
     ],
     "body": [
-      "<template>",
-      "\t$1",
-      "</template>",
-      "",
-      "<script lang=\"ts\" setup>",
-      "\t$2",
-      "</script>",
-      "",
-      "<style lang=\"sass\">",
-      "\t$3",
-      "</style>",
-      ""
+      "console.log('=========> ${1:variable}')"
     ],
-    "description": "My standard setup Vue3 + TS"
+    "description": "[Ogth] Console.log"
+  },
+  "cclog": {
+    "prefix": [
+      "cclog"
+    ],
+    "body": [
+      "console.log('%c===> ${1:variable}', 'color: ${2:orange}')"
+    ],
+    "description": "[Ogth] Colored console.log"
+  },
+  "vclog": {
+    "prefix": [
+      "vclog"
+    ],
+    "body": [
+      "console.log('=========> ${1:variable}', ${2:variable})"
+    ],
+    "description": "[Ogth] Console.log with variable"
+  },
+  "cvclog": {
+    "prefix": [
+      "cvclog"
+    ],
+    "body": [
+      "console.log('%c=========> ${1:variable}', ${2:variable})"
+    ],
+    "description": "[Ogth] Colored console.log with variable"
+  },
+  "arrow": {
+    "prefix": [
+      "arrow"
+    ],
+    "body": [
+      "const ${1:name} = (${2: params}) => {",
+      "\t$0",
+      "}"
+    ],
+    "description": "[Ogth] Arrow function component"
+  },
+  "arrowExport": {
+    "prefix": [
+      "arrowExport"
+    ],
+    "body": [
+      "const ${1:name} = (${2: params}) => {",
+      "\t$0",
+      "}",
+      "",
+      "export default $1"
+    ],
+    "description": "[Ogth] Arrow function component with export"
   }
 }
