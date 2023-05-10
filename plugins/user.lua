@@ -9,16 +9,19 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
-  { "folke/todo-comments.nvim", event = 'BufRead' },
+  { "folke/todo-comments.nvim", event = "BufRead" },
   "folke/tokyonight.nvim",
   "tpope/vim-endwise",
-  { "tpope/vim-abolish",        event = 'BufRead' },
+  { "tpope/vim-abolish", event = "BufRead" },
   {
     "kylechui/nvim-surround",
     lazy = false,
-    opts = true
+    opts = true,
   },
-  { 'wellle/targets.vim', event = 'BufRead' },
-  "jose-elias-alvarez/typescript.nvim"
-
+  { "wellle/targets.vim", event = "BufRead" },
+  "jose-elias-alvarez/typescript.nvim",
+  {
+    "AckslD/nvim-trevJ.lua",
+    event = "BufRead",
+  },
 }
