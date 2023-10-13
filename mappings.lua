@@ -23,9 +23,28 @@ return {
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
-    ["<leader>j"] = function() require("trevj").format_at_cursor() end,
+    ["<leader>j"] = { function() require("trevj").format_at_cursor() end, name = 'Inline arguments' },
+    ["<leader>l"] = { name = "LSP" },
+    ["<leader>lH"] = { "<cmd>lua vim.lsp.inlay_hint(0)<cr>", desc = "Toggle inlay hints" },
+    -- ["<leader>N"] = {
+    --   name = "Tests"
+    -- },
+    -- ["<leader>Na"] = {
+    --   name = "Api tests"
+    -- },
+    -- ["<leader>Naw"] = {
+    --   function()
+    --     require('neotest').run.run({ jestCommand = 'jest -c ./tests/jestApiConfig.ts --watch ' })
+    --   end,
+    --   desc = "run",
+    -- },
+
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+  },
+  v = {
+    [">"] = { ">gv" },
+    ["<"] = { "<gv" },
   },
   t = {
     -- setting a mapping to false will disable it

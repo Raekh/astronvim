@@ -8,6 +8,15 @@
     ],
     "description": "[Ogth] Console.log"
   },
+  "slog": {
+    "prefix": [
+      "slog"
+    ],
+    "body": [
+      "console.log('=========> ${1:variable}', ${1})"
+    ],
+    "description": "[Ogth] Console.log with variable"
+  },
   "cclog": {
     "prefix": [
       "cclog"

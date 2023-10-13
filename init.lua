@@ -28,6 +28,37 @@ return {
 
   lsp = {
     -- customize lsp formatting options
+    config = {
+      tsserver = {
+        disable_formatting = true,
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = 'all',
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            }
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = 'all',
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            }
+          }
+        }
+      }
+    },
     formatting = {
       -- control auto formatting on save
       format_on_save = {
@@ -42,6 +73,7 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
+        "tsserver"
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -54,7 +86,20 @@ return {
     },
     setup_handlers = {
       -- add custom handler
-      tsserver = function(_, opts) require("typescript").setup { server = opts } end
+      tsserver = function(_, opts)
+        local newOpts = vim.tbl_extend("keep", {}, opts)
+
+        newOpts.cmd = {
+          "typescript-language-server",
+          "--tsserver-path",
+          "/usr/local/bin/tsserver",
+          "--stdio"
+        }
+
+        require("typescript").setup({
+          server = newOpts,
+        })
+      end
     },
     plugins = {
       "jose-elias-alvarez/typescript.nvim", -- add lsp plugin
