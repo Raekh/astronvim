@@ -30,7 +30,11 @@ return {
     -- customize lsp formatting options
     config = {
       tsserver = {
+        -- cmd = '',
+        -- single_file_support = false,
+        -- update_in_insert = true,
         disable_formatting = true,
+        -- path = '/home/ostrogoth/.config/yarn/global/node_modules/typescript/lib/tsserver.js',
         settings = {
           typescript = {
             inlayHints = {
@@ -89,15 +93,20 @@ return {
       tsserver = function(_, opts)
         local newOpts = vim.tbl_extend("keep", {}, opts)
 
-        newOpts.cmd = {
-          "typescript-language-server",
-          "--tsserver-path",
-          "/usr/local/bin/tsserver",
-          "--stdio"
-        }
+        -- newOpts.cmd = {
+        --   "typescript-language-server",
+        --   "--tsserver-path",
+        --   "/usr/local/bin/tsserver",
+        --   "--stdio"
+        -- }
 
         require("typescript").setup({
           server = newOpts,
+          -- initialisationOptions = {
+          --   tsserver = {
+          --     path = '/home/ostrogoth/.config/yarn/global/node_modules/typescript/lib/tsserver.js'
+          --   }
+          -- }
         })
       end
     },
