@@ -20,7 +20,6 @@ return {
     opts = true,
   },
   { "wellle/targets.vim", event = "BufRead" },
-  "jose-elias-alvarez/typescript.nvim",
   {
     "AckslD/nvim-trevJ.lua",
     event = "BufRead",
