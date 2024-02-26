@@ -60,6 +60,15 @@ return {
               includeInlayEnumMemberValueHints = true,
             }
           }
+        },
+        inlay_hints = {
+          enabled = true
+        },
+        setup = {
+          tsserver = function(_, opts)
+            require('typescript').setup({ server = opts })
+            return true
+          end
         }
       }
     },
