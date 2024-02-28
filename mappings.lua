@@ -37,6 +37,7 @@ return {
     ["<leader>lt"] = { "<cmd>LspRestart<cr>", desc = "Restart LSP" },
     ["<leader>bh"] = { "<cmd>Bdelete hidden<cr>", desc = "Close hidden buffers" },
     ["<leader>bH"] = { "<cmd>Bwipeout hidden<cr>", desc = "Wipeout hidden buffers" },
+    ["<leader>r"] = { name = "Registers" },
     ["<leader>rc"] = {
       function()
         for i = 34, 122 do
@@ -48,6 +49,9 @@ return {
       ,
       desc = 'Clear registers'
     },
+    ["<Leader>D"] = { name = "Diffview" },
+    ["<Leader>a"] = { name = "Swap with previous..." },
+    ["<Leader>s"] = { name = "Swap with next..." }
     -- ["<leader>N"] = {
     --   name = "Tests"
     -- },
