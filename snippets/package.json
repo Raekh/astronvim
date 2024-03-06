@@ -24,6 +24,10 @@
       {
         "language": "javascriptreact",
         "path": "./typescript.json"
+      },
+      {
+        "language": "prisma",
+        "path": "./prisma.json"
       }
     ]
   }

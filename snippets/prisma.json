@@ -1,0 +1,15 @@
+{
+  "dbmodel": {
+    "prefix": [
+      "dbmodel"
+    ],
+    "body": [
+      "model ${1:name} {",
+      "  id String @id @default(uuid())",
+      "  createdAt DateTime @default(now())",
+      "  updatedAt DateTime @updatedAt",
+      "}"
+    ],
+    "description": "Create initialized prisma db model"
+  }
+}
