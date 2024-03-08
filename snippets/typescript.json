@@ -4,68 +4,73 @@
       "clog"
     ],
     "body": [
-      "console.log('=========> ${1:variable}')"
+      "console.log('=========> ${1:message}')"
     ],
-    "description": "[Ogth] Console.log"
+    "description": "Simple console.log"
   },
-  "slog": {
+  "cvlog": {
     "prefix": [
-      "slog"
+      "cvlog"
     ],
     "body": [
-      "console.log('=========> ${1:variable}', ${1})"
+      "console.log('', ${2:variable})"
     ],
-    "description": "[Ogth] Console.log with variable"
+    "description": "Simple console.log with variable"
   },
-  "cclog": {
+  "rac": {
     "prefix": [
-      "cclog"
+      "rac"
     ],
     "body": [
-      "console.log('%c===> ${1:variable}', 'color: ${2:orange}')"
-    ],
-    "description": "[Ogth] Colored console.log"
-  },
-  "vclog": {
-    "prefix": [
-      "vclog"
-    ],
-    "body": [
-      "console.log('=========> ${1:variable}', ${2:variable})"
-    ],
-    "description": "[Ogth] Console.log with variable"
-  },
-  "cvclog": {
-    "prefix": [
-      "cvclog"
-    ],
-    "body": [
-      "console.log('%c=========> ${1:variable}', ${2:variable})"
-    ],
-    "description": "[Ogth] Colored console.log with variable"
-  },
-  "arrow": {
-    "prefix": [
-      "arrow"
-    ],
-    "body": [
-      "const ${1:name} = (${2: params}) => {",
-      "\t$0",
+      "const ${1:$TM_FILENAME_BASE} = (${2:params}) => {",
+      "\t${0:return <div>$1</div>}",
       "}"
     ],
     "description": "[Ogth] Arrow function component"
   },
-  "arrowExport": {
+  "race": {
     "prefix": [
-      "arrowExport"
+      "race"
     ],
     "body": [
-      "const ${1:name} = (${2: params}) => {",
-      "\t$0",
+      "const ${1:$TM_FILENAME_BASE} = (${2:params}) => {",
+      "\t${0:return <div>$1</div>}",
       "}",
       "",
       "export default $1"
     ],
     "description": "[Ogth] Arrow function component with export"
+  },
+  "racp": {
+    "prefix": [
+      "racp"
+    ],
+    "body": [
+      "type ${1}Props = {",
+      "\t${3}",
+      "}",
+      "",
+      "const ${1:$TM_FILENAME_BASE} = (${2:params}: ${1:name}Props) => {",
+      "\t${0:return <div>$1</div>}",
+      "}"
+    ],
+    "description": "[Ogth] Arrow function component with props"
+  },
+  "racep": {
+    "prefix": [
+      "racep"
+    ],
+    "body": [
+      "type ${1}Props = {",
+      "\t${3}",
+      "}",
+      "",
+      "const ${1:$TM_FILENAME_BASE} = (${2:params}: ${1:name}Props) => {",
+      "\t${0:return <div>$1</div>}",
+      "}",
+      "",
+      "export default $1"
+    ],
+    "description": "[Ogth] Arrow function component with export and props"
   }
 }
