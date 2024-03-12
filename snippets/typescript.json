@@ -13,7 +13,7 @@
       "cvlog"
     ],
     "body": [
-      "console.log('', ${2:variable})"
+      "console.log('=========> ${1:message}', ${2:variable})"
     ],
     "description": "Simple console.log with variable"
   },
