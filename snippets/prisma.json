@@ -5,9 +5,10 @@
     ],
     "body": [
       "model ${1:name} {",
-      "  id String @id @default(uuid())",
-      "  createdAt DateTime @default(now())",
-      "  updatedAt DateTime @updatedAt",
+      "\tid String @id @default(uuid())",
+      "\tcreatedAt DateTime @default(now())",
+      "\tupdatedAt DateTime @updatedAt",
+      "\t$0",
       "}"
     ],
     "description": "Create initialized prisma db model"

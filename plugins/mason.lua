@@ -26,16 +26,17 @@ return {
           })
         end,
         -- eslint_d:
-        eslint_d = function()
-          require("null-ls").register(require("null-ls").builtins.diagnostics.eslint_d.with {
-            condition = function(utils)
-              return utils.root_has_file "package.json"
-                  and (utils.root_has_file ".eslintrc.json"
-                    or utils.root_has_file ".eslintrc.js"
-                    or utils.root_has_file ".eslintrc.mjs")
-            end,
-          })
-        end,
+        -- eslint_d = function()
+        --   require("null-ls").register(require("null-ls").builtins.diagnostics.eslint_d.with {
+        --     condition = function(utils)
+        --       return utils.root_has_file "package.json"
+        --           and (utils.root_has_file ".eslintrc.json"
+        --             or utils.root_has_file ".eslintrc.js"
+        --             or utils.root_has_file ".eslintrc.cjs"
+        --             or utils.root_has_file ".eslintrc.mjs")
+        --     end,
+        --   })
+        -- end,
       }
     },
   },
