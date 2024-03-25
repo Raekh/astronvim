@@ -191,20 +191,6 @@
     ],
     "description": "[Ogth] Describe with it"
   },
-  "adesit": {
-    "prefix": [
-      "adesit"
-    ],
-    "body": [
-      "describe('$1', async () => {",
-      "\tit('should $2', () => {",
-      "\t\t$0",
-      "\t\texpect(1).toBeTruthy();",
-      "\t})",
-      "})"
-    ],
-    "description": "[Ogth] Describe (async) with it"
-  },
   "desait": {
     "prefix": [
       "desait"
@@ -218,20 +204,6 @@
       "})"
     ],
     "description": "[Ogth] Describe with it (async)"
-  },
-  "adesait": {
-    "prefix": [
-      "adesait"
-    ],
-    "body": [
-      "describe('$1', async () => {",
-      "\tit('should $2', async () => {",
-      "\t\t$0",
-      "\t\texpect(1).toBeTruthy();",
-      "\t})",
-      "})"
-    ],
-    "description": "[Ogth] Describe (async) with it (async)"
   },
   "desballit": {
     "prefix": [
@@ -251,24 +223,6 @@
     ],
     "description": "[Ogth] Describe with beforeAll & it"
   },
-  "adesballit": {
-    "prefix": [
-      "adesballit"
-    ],
-    "body": [
-      "describe('$1', async () => {",
-      "\tbeforeAll('$2', () => {",
-      "\t\t$0",
-      "\t})",
-      "",
-      "\tit('should $3', () => {",
-      "\t\t$0",
-      "\t\texpect(1).toBeTruthy();",
-      "\t})",
-      "})"
-    ],
-    "description": "[Ogth] Describe (async) with beforeAll & it"
-  },
   "desaballit": {
     "prefix": [
       "desaballit"
@@ -286,24 +240,6 @@
       "})"
     ],
     "description": "[Ogth] Describe with beforeAll (async) & it"
-  },
-  "adesaballit": {
-    "prefix": [
-      "adesaballit"
-    ],
-    "body": [
-      "describe('$1', async () => {",
-      "\tbeforeAll('$2', async () => {",
-      "\t\t$0",
-      "\t})",
-      "",
-      "\tit('should $3', () => {",
-      "\t\t$0",
-      "\t\texpect(1).toBeTruthy();",
-      "\t})",
-      "})"
-    ],
-    "description": "[Ogth] Describe (async) with beforeAll (async) & it"
   },
   "desballait": {
     "prefix": [
@@ -323,24 +259,6 @@
     ],
     "description": "[Ogth] Describe with beforeAll & it (async)"
   },
-  "adesballait": {
-    "prefix": [
-      "adesballait"
-    ],
-    "body": [
-      "describe('$1', async () => {",
-      "\tbeforeAll('$2', () => {",
-      "\t\t$0",
-      "\t})",
-      "",
-      "\tit('should $3', async () => {",
-      "\t\t$0",
-      "\t\texpect(1).toBeTruthy();",
-      "\t})",
-      "})"
-    ],
-    "description": "[Ogth] Describe (async) with beforeAll & it (async)"
-  },
   "desaballait": {
     "prefix": [
       "desaballait"
@@ -358,23 +276,5 @@
       "})"
     ],
     "description": "[Ogth] Describe with beforeAll (async) & it (async)"
-  },
-  "adesaballait": {
-    "prefix": [
-      "adesaballait"
-    ],
-    "body": [
-      "describe('$1', async () => {",
-      "\tbeforeAll('$2', async () => {",
-      "\t\t$0",
-      "\t})",
-      "",
-      "\tit('should $3', async () => {",
-      "\t\t$0",
-      "\t\texpect(1).toBeTruthy();",
-      "\t})",
-      "})"
-    ],
-    "description": "[Ogth] Describe (async) with beforeAll (async) & it (async)"
   },
 }
