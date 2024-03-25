@@ -11,19 +11,19 @@
       },
       {
         "language": "typescript",
-        "path": "./typescript.json"
+        "path": "./typescript.jsonc"
       },
       {
         "language": "typescriptreact",
-        "path": "./typescript.json"
+        "path": "./typescript.jsonc"
       },
       {
         "language": "javascript",
-        "path": "./typescript.json"
+        "path": "./typescript.jsonc"
       },
       {
         "language": "javascriptreact",
-        "path": "./typescript.json"
+        "path": "./typescript.jsonc"
       },
       {
         "language": "prisma",
