@@ -1,85 +1,87 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- You can also add or configure plugins by creating files in this `plugins/` folder
--- Here are some examples:
-
----@type LazySpec
 return {
-
-  -- == Examples of Adding Plugins ==
-
-  "andweeb/presence.nvim",
+  -- You can also add new plugins here as well:
+  -- Add plugins, the lazy syntax
+  -- "andweeb/presence.nvim",
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("lsp_signature").setup()
+  --   end,
+  -- },
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
     config = function() require("lsp_signature").setup() end,
   },
-
-  -- == Examples of Overriding Plugins ==
-
-  -- customize alpha options
+  "tanvirtin/monokai.nvim",
+  "folke/tokyonight.nvim",
+  "catppuccin/nvim",
+  "folke/trouble.nvim",
+  "tpope/vim-endwise",
+  { "tpope/vim-abolish", event = "BufRead" },
   {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
-      return opts
-    end,
+    "kylechui/nvim-surround",
+    lazy = false,
+    opts = true,
   },
-
-  -- You can disable default plugins as follows:
-  { "max397574/better-escape.nvim", enabled = false },
-
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
+  { "wellle/targets.vim", event = "BufRead" },
   {
-    "L3MON4D3/LuaSnip",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom luasnip configuration such as filetype extend or custom snippets
-      local luasnip = require "luasnip"
-      luasnip.filetype_extend("javascript", { "javascriptreact" })
-    end,
+    "iamcco/markdown-preview.nvim",
+    build = function() vim.fn["mkdp#util#install"]() end,
+    ft = "markdown",
   },
-
   {
-    "windwp/nvim-autopairs",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom autopairs configuration such as custom rules
-      local npairs = require "nvim-autopairs"
-      local Rule = require "nvim-autopairs.rule"
-      local cond = require "nvim-autopairs.conds"
-      npairs.add_rules(
-        {
-          Rule("$", "$", { "tex", "latex" })
-            -- don't add a pair if the next character is %
-            :with_pair(cond.not_after_regex "%%")
-            -- don't add a pair if  the previous character is xxx
-            :with_pair(
-              cond.not_before_regex("xxx", 3)
-            )
-            -- don't move right when repeat character
-            :with_move(cond.none())
-            -- don't delete if the next character is xx
-            :with_del(cond.not_after_regex "xx")
-            -- disable adding a newline when you press <cr>
-            :with_cr(cond.none()),
+    "abecodes/tabout.nvim",
+    lazy = false,
+  },
+  {
+    "Asheq/close-buffers.vim",
+    lazy = false,
+  },
+  {
+    "VidocqH/lsp-lens.nvim",
+    lazy = false,
+    config = function()
+      local SymbolKind = vim.lsp.protocol.SymbolKind
+
+      require("lsp-lens").setup {
+        enable = true,
+        include_declaration = false, -- Reference include declaration
+        sections = {
+          definition = function(count) return "Definitions: " .. count end,
+          references = function(count) return "References: " .. count end,
+          implements = function(count) return "Implements: " .. count end,
+          git_authors = function(latest_author, count)
+            return " " .. latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
+          end,
         },
-        -- disable for .vim files, but it work for another filetypes
-        Rule("a", "a", "-vim")
-      )
+        ignore_filetype = {
+          "prisma",
+        },
+        -- Target Symbol Kinds to show lens information
+        target_symbol_kinds = { SymbolKind.Function, SymbolKind.Method, SymbolKind.Interface },
+        -- Symbol Kinds that may have target symbol kinds as children
+        wrapper_symbol_kinds = { SymbolKind.Class, SymbolKind.Struct },
+      }
     end,
   },
+  -- {
+  --   'lvimuser/lsp-inlayhints.nvim',
+  --   config = function()
+  --     vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+  --     vim.api.nvim_create_autocmd("LspAttach", {
+  --       group = "LspAttach_inlayhints",
+  --       callback = function(args)
+  --         if not (args.data and args.data.client_id) then
+  --           return
+  --         end
+  --
+  --         local bufnr = args.buf
+  --         local client = vim.lsp.get_client_by_id(args.data.client_id)
+  --         require("lsp-inlayhints").on_attach(client, bufnr)
+  --       end,
+  --     })
+  --   end
+  -- }
 }

@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+if false then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -35,7 +35,7 @@ return {
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
-        -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
+        -- NOTE: `mapLeader` and `maplocalLeader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
       },
     },
@@ -44,13 +44,16 @@ return {
     mappings = {
       -- first key is the mode
       n = {
-        -- second key is the lefthand side of the map
-
+        -- Disable disgusting mappings
+        ["<C-q>"] = false,
+        ["<C-s>"] = false,
         -- navigate buffer tabs with `H` and `L`
-        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        -- NOTE: Removing this but keeping it for the interesting factor
+        -- L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        -- H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
-        -- mappings seen under group name "Buffer"
+        -- Buffers
+        ["<Leader>b"] = { desc = "Buffers" },
         ["<Leader>bD"] = {
           function()
             require("astroui.status.heirline").buffer_picker(
@@ -59,11 +62,49 @@ return {
           end,
           desc = "Pick to close",
         },
+        ["<Leader>bh"] = { "<cmd>Bdelete hidden<cr>", desc = "Close hidden buffers" },
+        ["<Leader>bH"] = { "<cmd>Bwipeout hidden<cr>", desc = "Wipeout hidden buffers" },
+
+        -- Lsp
+
+        ["<Leader>l"] = { name = "LSP" },
+        -- FIXME: Need to work on this
+        ["<Leader>lH"] = {
+          function()
+            local is_enabled = vim.lsp.inlay_hint.is_enabled(0)
+            -- local is_enabled = require("astrolsp.features").inlay_hints
+            vim.lsp.inlay_hint.enable(0, not is_enabled)
+          end,
+          desc = "Toggle inlay hints",
+        },
+        ["<Leader>lt"] = { "<cmd>LspRestart<cr>", desc = "Restart LSP" },
+
+        ["]q"] = { "<cmd>cnext<CR>", desc = "Next quickfix list entry" },
+        ["[q"] = { "<cmd>cprev<CR>", desc = "Previous quickfix list entry" },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
-        ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
+        -- Registers
+        ["<Leader>r"] = { name = "Registers" },
+        ["<Leader>rc"] = {
+          function()
+            for i = 34, 122 do
+              local reg_name = string.char(i)
+              pcall(vim.fn.setreg, reg_name, "")
+            end
+            print "All user registers cleared."
+          end,
+          desc = "Clear registers",
+        },
+        ["<Leader>D"] = { name = "Diffview" },
+        ["<Leader>a"] = { name = "Swap with previous..." },
+        ["<Leader>s"] = { name = "Swap with next..." },
+      },
+      v = {
+        [">"] = { ">gv" },
+        ["<"] = { "<gv" },
       },
       t = {
         -- setting a mapping to false will disable it
