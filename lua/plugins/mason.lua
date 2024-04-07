@@ -1,3 +1,5 @@
+if true then return {} end -- WARN:
+
 ---@type LazySpec
 return {
   -- use mason-lspconfig to configure LSP installations
