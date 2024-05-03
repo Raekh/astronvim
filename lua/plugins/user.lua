@@ -16,6 +16,7 @@ return {
   -- },
   "tanvirtin/monokai.nvim",
   "folke/tokyonight.nvim",
+  "jim-at-jibba/ariake.nvim",
   "catppuccin/nvim",
   "folke/trouble.nvim",
   "tpope/vim-endwise",
