@@ -8,10 +8,10 @@ return {
       { "<Leader>lo", "<CMD>TypescriptOrganizeImports<CR>", desc = "Typescript: Organize imports" },
     },
   },
-  {
-    "dmmulroy/ts-error-translator.nvim",
-    config = true,
-  },
+  -- {
+  --   "dmmulroy/ts-error-translator.nvim",
+  --   config = true,
+  -- },
   {
     "dmmulroy/tsc.nvim",
     config = true,
